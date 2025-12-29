@@ -43,7 +43,7 @@ export default function DatePicker({ availableDays, selectedDate, onDateSelect }
       date.setDate(today.getDate() + i);
       const dayOfWeek = date.getDay();
 
-      if (dayNumbers.includes(dayOfWeek as DayOfWeek)) {
+      if (dayNumbers.includes(dayOfWeek)) {
         dates.push(date.toISOString().split('T')[0]);
       }
     }
