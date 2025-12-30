@@ -56,11 +56,11 @@ export default function CategoryFilter({ categories, selectedCategory, onSelectC
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full overflow-hidden">
       {canScrollLeft && (
         <button
           onClick={() => scroll('left')}
-          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 shadow-md hover:bg-gray-50 hover:shadow-lg transition-all"
+          className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-all"
           aria-label="Scroll left"
         >
           <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -70,14 +70,19 @@ export default function CategoryFilter({ categories, selectedCategory, onSelectC
       )}
       <div
         ref={scrollContainerRef}
-        className="flex gap-3 overflow-x-auto scrollbar-hide scroll-smooth px-10 py-1"
+        className="flex gap-2 sm:gap-3 overflow-x-auto scrollbar-hide scroll-smooth py-1 min-w-0"
+        style={{ 
+          paddingLeft: canScrollLeft ? '2.5rem' : '0', 
+          paddingRight: canScrollRight ? '2.5rem' : '0',
+          WebkitOverflowScrolling: 'touch'
+        }}
         onScroll={checkScrollability}
       >
         <button
           onClick={() => onSelectCategory(null)}
-          className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex-shrink-0 ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex-shrink-0 w-auto ${
             selectedCategory === null
-              ? 'bg-gray-900 text-white shadow-sm'
+              ? 'bg-[#011a5a] text-white'
               : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
           }`}
         >
@@ -87,10 +92,10 @@ export default function CategoryFilter({ categories, selectedCategory, onSelectC
           <button
             key={category.id}
             onClick={() => onSelectCategory(category.id)}
-            className={`px-4 py-2 rounded-lg text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex-shrink-0 ${
-              selectedCategory === category.id
-                ? 'bg-gray-900 text-white shadow-sm'
-                : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+            className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-xs font-semibold uppercase tracking-wide whitespace-nowrap transition-all flex-shrink-0 w-auto ${
+            selectedCategory === category.id
+              ? 'bg-[#011a5a] text-white'
+              : 'bg-white text-gray-700 border border-gray-200 hover:border-gray-300 hover:bg-gray-50'
             }`}
           >
             {category.name}
@@ -100,7 +105,7 @@ export default function CategoryFilter({ categories, selectedCategory, onSelectC
       {canScrollRight && (
         <button
           onClick={() => scroll('right')}
-          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 shadow-md hover:bg-gray-50 hover:shadow-lg transition-all"
+          className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white border border-gray-200 rounded-full p-2 hover:bg-gray-50 transition-all"
           aria-label="Scroll right"
         >
           <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">

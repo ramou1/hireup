@@ -18,8 +18,8 @@ export default function Button({
   const baseClasses = 'px-6 py-3 rounded-xl text-xs font-semibold uppercase tracking-wide transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed';
   
   const variantClasses = {
-    primary: 'bg-gray-900 text-white hover:bg-gray-800 shadow-sm hover:shadow-md',
-    secondary: 'bg-gray-600 text-white hover:bg-gray-700 shadow-sm hover:shadow-md',
+    primary: 'bg-[#011a5a] text-white hover:bg-[#010f3d]',
+    secondary: 'bg-gray-600 text-white hover:bg-gray-700',
     outline: 'border-2 border-gray-200 text-gray-900 hover:bg-gray-50 hover:border-gray-300',
   };
 

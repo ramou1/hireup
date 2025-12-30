@@ -63,27 +63,37 @@ export default function ProfessionalPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <div className="flex items-center justify-between">
-            <Link href="/" className="inline-flex items-center text-gray-700 hover:text-gray-900 font-medium transition-colors">
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-              Voltar
+      <header className="bg-[#011a5a] border-b border-[#010f3d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 sm:py-2">
+          <div className="flex items-center justify-end gap-2 sm:gap-4">
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/images/logo-hireup.png"
+                alt="HireUP"
+                width={220}
+                height={110}
+                className="h-14 sm:h-20 w-auto"
+                priority
+              />
             </Link>
-            <button className="px-4 py-2 text-xs font-semibold text-gray-700 uppercase tracking-wide border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <button className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
               Entrar
             </button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 flex-1">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10 flex-1">
+        <Link href="/" className="inline-flex items-center text-[#011a5a] hover:text-[#010f3d] font-medium transition-colors mb-4 sm:mb-6">
+          <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
+          Voltar
+        </Link>
+        <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden mb-6 sm:mb-8">
           <div className="md:flex">
             <div className="md:w-2/5">
-              <div className="relative h-80 md:h-full w-full bg-gradient-to-br from-gray-50 to-gray-100">
+              <div className="relative h-64 sm:h-80 md:h-full w-full bg-gradient-to-br from-gray-50 to-gray-100">
                 {professional.avatar ? (
                   <Image
                     src={professional.avatar}
@@ -106,10 +116,10 @@ export default function ProfessionalPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="md:w-3/5 p-8 md:p-10">
-              <div className="mb-6">
-                <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2 tracking-tight">{professional.name}</h1>
-                <p className="text-lg text-gray-600 font-medium">{professional.profession}</p>
+            <div className="md:w-3/5 p-4 sm:p-8 md:p-10">
+              <div className="mb-4 sm:mb-6">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 tracking-tight">{professional.name}</h1>
+                <p className="text-base sm:text-lg text-gray-600 font-medium">{professional.profession}</p>
                 {professional.location && (
                   <div className="flex items-center mt-2 text-gray-500">
                     <svg className="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -121,29 +131,29 @@ export default function ProfessionalPage({ params }: PageProps) {
                 )}
               </div>
 
-              <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
                 <Rating rating={professional.averageRating} showNumber size="md" />
-                <span className="text-gray-600 text-sm">
+                <span className="text-gray-600 text-xs sm:text-sm">
                   {professional.totalReviews} avaliações
                 </span>
               </div>
 
-              <div className="mb-6 pb-6 border-b border-gray-100">
+              <div className="mb-4 sm:mb-6 pb-4 sm:pb-6 border-b border-gray-100">
                 <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">Preço médio</p>
-                <p className="text-3xl font-bold text-gray-900">
+                <p className="text-2xl sm:text-3xl font-bold text-gray-900">
                   R$ {professional.averagePrice.toFixed(0)}
                 </p>
               </div>
 
               {professional.bio && (
-                <div className="mb-6">
-                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3">Sobre</h2>
-                  <p className="text-gray-700 leading-relaxed">{professional.bio}</p>
+                <div className="mb-4 sm:mb-6">
+                  <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-2 sm:mb-3">Sobre</h2>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">{professional.bio}</p>
                 </div>
               )}
 
               <div>
-                <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-3">Dias disponíveis</h2>
+                <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-2 sm:mb-3">Dias disponíveis</h2>
                 <div className="flex flex-wrap gap-2">
                   {professional.availableDays.map((day) => (
                     <span
@@ -159,9 +169,9 @@ export default function ProfessionalPage({ params }: PageProps) {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-6">Solicitar Serviço</h2>
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+          <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-8">
+            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4 sm:mb-6">Solicitar Serviço</h2>
             
             {requestSent ? (
               <div className="bg-green-50 border border-green-200 rounded-xl p-5">
@@ -193,7 +203,7 @@ export default function ProfessionalPage({ params }: PageProps) {
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-gray-900 focus:border-transparent text-gray-900 placeholder-gray-400 bg-white resize-none transition-all"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#011a5a] focus:border-transparent text-gray-900 placeholder-gray-400 bg-white resize-none transition-all"
                     placeholder="Descreva o serviço que você precisa..."
                   />
                 </div>
@@ -215,8 +225,8 @@ export default function ProfessionalPage({ params }: PageProps) {
             )}
           </div>
 
-          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-6">
+          <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-8">
+            <h2 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4 sm:mb-6">
               Avaliações ({professional.reviews.length})
             </h2>
             <div>
@@ -236,7 +246,7 @@ export default function ProfessionalPage({ params }: PageProps) {
 
       {showTipModal && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl border border-gray-100">
+          <div className="bg-white rounded-2xl p-4 sm:p-8 max-w-md w-full border border-gray-100">
             <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">
               Enviar Gorjeta
             </h3>

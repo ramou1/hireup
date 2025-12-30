@@ -1,6 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 import { mockProfessionals } from '@/src/mocks/professionals';
 import SearchBar from '@/src/components/SearchBar';
 import ProfessionalCard from '@/src/components/ProfessionalCard';
@@ -15,11 +17,9 @@ const categories = [
   { id: 'eletricista', name: 'Elétrica', profession: 'Eletricista' },
   { id: 'limpeza', name: 'Limpeza', profession: 'Limpeza Profissional' },
   { id: 'pintor', name: 'Pintura', profession: 'Pintor' },
-  { id: 'paisagista', name: 'Paisagismo', profession: 'Paisagista' },
   { id: 'pedreiro', name: 'Construção', profession: 'Pedreiro' },
   { id: 'montador', name: 'Montagem', profession: 'Montador de Móveis' },
   { id: 'ar-condicionado', name: 'Ar Condicionado', profession: 'Técnico de Ar Condicionado' },
-  { id: 'vidraceiro', name: 'Vidraçaria', profession: 'Vidraceiro' },
 ];
 
 export default function Home() {
@@ -57,20 +57,29 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
-      <header className="bg-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+      <header className="bg-[#011a5a] border-b border-[#010f3d]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 sm:py-2">
           <div className="flex items-center justify-between">
-            <h1 className="text-4xl font-bold text-gray-900 tracking-tight">HireUP</h1>
-            <button className="px-4 py-2 text-xs font-semibold text-gray-700 uppercase tracking-wide border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">
+            <Link href="/" className="inline-flex items-center">
+              <Image
+                src="/images/logo-hireup.png"
+                alt="HireUP"
+                width={220}
+                height={110}
+                className="h-14 sm:h-20 w-auto"
+                priority
+              />
+            </Link>
+            <button className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
               Entrar
             </button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 flex-1">
-        <div className="mb-8">
-          <p className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-6">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 flex-1">
+        <div className="mb-6 sm:mb-8">
+          <p className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4 sm:mb-6">
             Encontre o profissional perfeito para você
           </p>
           <SearchBar
@@ -80,7 +89,7 @@ export default function Home() {
           />
         </div>
 
-        <div className="mb-10">
+        <div className="mb-6 sm:mb-10">
           <CategoryFilter
             categories={categories}
             selectedCategory={selectedCategory}
@@ -115,7 +124,7 @@ export default function Home() {
                 {filteredProfessionals.length} {filteredProfessionals.length === 1 ? 'profissional' : 'profissionais'} encontrado{filteredProfessionals.length !== 1 ? 's' : ''}
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
               {filteredProfessionals.map((professional) => (
                 <ProfessionalCard key={professional.id} professional={professional} />
               ))}

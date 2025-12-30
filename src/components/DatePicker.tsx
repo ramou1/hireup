@@ -76,7 +76,7 @@ export default function DatePicker({ availableDays, selectedDate, onDateSelect }
               onClick={() => onDateSelect(date)}
               className={`px-4 py-3 text-sm rounded-xl border transition-all ${
                 selectedDate === date
-                  ? 'bg-gray-900 text-white border-gray-900 shadow-sm'
+                  ? 'bg-[#011a5a] text-white border-[#011a5a]'
                   : 'bg-white text-gray-700 border-gray-200 hover:border-gray-300 hover:bg-gray-50'
               }`}
             >

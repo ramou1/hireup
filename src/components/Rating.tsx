@@ -6,9 +6,9 @@ interface RatingProps {
 
 export default function Rating({ rating, showNumber = false, size = 'md' }: RatingProps) {
   const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-5 h-5',
-    lg: 'w-6 h-6',
+    sm: 'w-5 h-5',
+    md: 'w-6 h-6',
+    lg: 'w-7 h-7',
   };
 
   const starSize = sizeClasses[size];
@@ -21,7 +21,7 @@ export default function Rating({ rating, showNumber = false, size = 'md' }: Rati
           return (
             <svg
               key={star}
-              className={`${starSize} ${isFilled ? 'text-amber-400' : 'text-gray-200'}`}
+              className={`${starSize} ${isFilled ? 'text-[#011a5a]' : 'text-gray-200'}`}
               fill="currentColor"
               viewBox="0 0 20 20"
             >
