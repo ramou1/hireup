@@ -8,6 +8,7 @@ import SearchBar from '@/src/components/SearchBar';
 import ProfessionalCard from '@/src/components/ProfessionalCard';
 import CategoryFilter from '@/src/components/CategoryFilter';
 import Footer from '@/src/components/Footer';
+import LoginModal from '@/src/components/LoginModal';
 
 const categories = [
   { id: 'fotografo', name: 'Fotografia', profession: 'Fotógrafo' },
@@ -25,6 +26,7 @@ const categories = [
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const filteredProfessionals = useMemo(() => {
     let filtered = mockProfessionals;
@@ -70,14 +72,17 @@ export default function Home() {
                 priority
               />
             </Link>
-            <button className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
+            <button 
+              onClick={() => setIsLoginModalOpen(true)}
+              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors"
+            >
               Entrar
             </button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 flex-1">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-12 flex-1 w-full overflow-x-hidden">
         <div className="mb-6 sm:mb-8">
           <p className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4 sm:mb-6">
             Encontre o profissional perfeito para você
@@ -124,15 +129,21 @@ export default function Home() {
                 {filteredProfessionals.length} {filteredProfessionals.length === 1 ? 'profissional' : 'profissionais'} encontrado{filteredProfessionals.length !== 1 ? 's' : ''}
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 w-full">
               {filteredProfessionals.map((professional) => (
-                <ProfessionalCard key={professional.id} professional={professional} />
+                <div key={professional.id} className="w-full min-w-0">
+                  <ProfessionalCard professional={professional} />
+                </div>
               ))}
             </div>
           </>
         )}
       </main>
       <Footer />
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
     </div>
   );
 }

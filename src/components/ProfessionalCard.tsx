@@ -21,10 +21,10 @@ export default function ProfessionalCard({ professional }: ProfessionalCardProps
   return (
     <Link
       href={`/professionals/${professional.id}`}
-      className="group block"
+      className="group block w-full h-full"
     >
-      <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 transition-all duration-300 hover:-translate-y-1">
-        <div className="relative h-56 w-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden">
+      <div className="overflow-hidden rounded-2xl bg-white border border-gray-100 transition-all duration-300 hover:-translate-y-1 w-full h-full flex flex-col">
+        <div className="relative h-48 sm:h-56 w-full bg-gradient-to-br from-gray-50 to-gray-100 overflow-hidden flex-shrink-0">
           {professional.avatar ? (
             <Image
               src={professional.avatar}
@@ -50,7 +50,7 @@ export default function ProfessionalCard({ professional }: ProfessionalCardProps
             </div>
           )}
         </div>
-        <div className="p-4 sm:p-6">
+        <div className="p-4 sm:p-6 flex-1 flex flex-col">
           <div className="mb-2 sm:mb-3">
             <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-1">{professional.name}</h3>
             <p className="text-xs sm:text-sm font-medium text-gray-500">{professional.profession}</p>

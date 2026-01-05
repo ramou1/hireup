@@ -9,6 +9,7 @@ import ReviewCard from '@/src/components/ReviewCard';
 import DatePicker from '@/src/components/DatePicker';
 import Button from '@/src/components/Button';
 import Footer from '@/src/components/Footer';
+import LoginModal from '@/src/components/LoginModal';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -21,6 +22,7 @@ export default function ProfessionalPage({ params }: PageProps) {
   const [message, setMessage] = useState('');
   const [requestSent, setRequestSent] = useState(false);
   const [showTipModal, setShowTipModal] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   if (!professional) {
     return (
@@ -65,7 +67,7 @@ export default function ProfessionalPage({ params }: PageProps) {
     <div className="min-h-screen bg-gray-50 flex flex-col">
       <header className="bg-[#011a5a] border-b border-[#010f3d]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-1 sm:py-2">
-          <div className="flex items-center justify-end gap-2 sm:gap-4">
+          <div className="flex items-center justify-between">
             <Link href="/" className="inline-flex items-center">
               <Image
                 src="/images/logo-hireup.png"
@@ -76,7 +78,10 @@ export default function ProfessionalPage({ params }: PageProps) {
                 priority
               />
             </Link>
-            <button className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors">
+            <button 
+              onClick={() => setIsLoginModalOpen(true)}
+              className="px-3 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-white uppercase tracking-wide border border-white/30 rounded-lg hover:bg-white/10 transition-colors"
+            >
               Entrar
             </button>
           </div>
@@ -245,7 +250,7 @@ export default function ProfessionalPage({ params }: PageProps) {
       </main>
 
       {showTipModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4 backdrop-blur-sm">
           <div className="bg-white rounded-2xl p-4 sm:p-8 max-w-md w-full border border-gray-100">
             <h3 className="text-xs font-semibold text-gray-900 uppercase tracking-wider mb-4">
               Enviar Gorjeta
@@ -272,6 +277,10 @@ export default function ProfessionalPage({ params }: PageProps) {
           </div>
         </div>
       )}
+      <LoginModal 
+        isOpen={isLoginModalOpen} 
+        onClose={() => setIsLoginModalOpen(false)} 
+      />
       <Footer />
     </div>
   );
